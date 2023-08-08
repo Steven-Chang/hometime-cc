@@ -17,4 +17,5 @@ rails s
 
 ```
 bundle exec rubocop -A
+bundle exec rspec
 ```
