@@ -11,12 +11,15 @@
 ```
 bundle
 rake db:setup
+rake db:test:prepare
 rails s
 ```
 
 ## Testing
 
 ```
-bundle exec rubocop -A
-bundle exec rspec
+rubocop -A
+rspec
+rake immigrant:check_keys
+rake active_record_doctor
 ```
