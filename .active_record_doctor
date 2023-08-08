@@ -1,0 +1,22 @@
+ActiveRecordDoctor.configure do
+  # Global settings affect all detectors.
+  global :ignore_tables, [
+    # Ignore internal Rails-related tables.
+    "ar_internal_metadata",
+    "schema_migrations",
+    "active_storage_blobs",
+    "active_storage_attachments",
+    "action_text_rich_texts",
+
+    # Add project-specific tables here.
+  ]
+
+  detector :missing_presence_validation,
+    ignore_attributes: ['PhoneNumber.owner_type']
+
+  detector :undefined_table_references,
+    ignore_models: ['ActionText::RichText', 'ActionText::EncryptedRichText', 'ActiveStorage::VariantRecord', 'ActiveStorage::Blob', 'ActiveStorage::Attachment', 'ActionMailbox::InboundEmail']
+
+  detector :unindexed_foreign_keys,
+    ignore_columns: ['phone_numbers.owner_id']
+end
