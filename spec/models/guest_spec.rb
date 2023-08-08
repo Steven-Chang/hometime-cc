@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Guest do
   describe 'ASSOCIATIONS' do
     it { should have_many(:phone_numbers).dependent(:delete_all) }
+    it { should have_many(:reservations).dependent(:restrict_with_exception) }
   end
 
   describe 'VALIDATIONS' do

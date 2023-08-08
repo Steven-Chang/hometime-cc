@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_062412) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_08_080026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,4 +32,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_062412) do
     t.index ["owner_type", "owner_id", "phone_number"], name: "phone_numbers_by_owner_phone_number", unique: true
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.string "code", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.integer "nights", null: false
+    t.integer "guests", null: false
+    t.integer "adults", null: false
+    t.integer "children", null: false
+    t.integer "infants", null: false
+    t.integer "status", null: false
+    t.integer "currency", null: false
+    t.string "payout_price", null: false
+    t.string "security_price", null: false
+    t.string "total_price", null: false
+    t.bigint "guest_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_reservations_on_code", unique: true
+    t.index ["guest_id"], name: "index_reservations_on_guest_id"
+  end
+
+  add_foreign_key "reservations", "guests", name: "reservations_guest_id_fk"
 end
