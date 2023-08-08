@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Guest do
+  describe 'ASSOCIATIONS' do
+    it { should have_many(:phone_numbers).dependent(:delete_all) }
+  end
+
   describe 'VALIDATIONS' do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:first_name) }
