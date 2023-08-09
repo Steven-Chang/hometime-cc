@@ -2,6 +2,6 @@
 
 class ReservationsController < ApplicationController
   def create_or_update
-    render json: Payload::ReservationProcessor.call(params), status: :ok
+    render json: Payload::ReservationProcessor.call(params), include: { guest: { include: { phone_numbers: {} } } }, status: :ok
   end
 end
