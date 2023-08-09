@@ -23,6 +23,10 @@ Layout/EndAlignment:
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
 
+Lint/MissingSuper:
+  Exclude:
+    - 'app/services/**/*'
+
 Lint/RescueException:
   Exclude:
     - 'config/application.rb'
