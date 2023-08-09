@@ -8,4 +8,7 @@ class Guest < ApplicationRecord
   # === VALIDATIONS ===
   validates :email, :first_name, :last_name, presence: true
   validates :email, uniqueness: { case_sensitive: false }
+
+  # === NESTED ATTRIBUTES ===
+  accepts_nested_attributes_for :phone_numbers
 end
