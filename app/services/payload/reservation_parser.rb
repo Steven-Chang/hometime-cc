@@ -12,7 +12,6 @@ module Payload
       end
       parsed_payload[:reservation][:status].downcase!
       parsed_payload[:reservation][:currency].downcase!
-      parsed_payload[:guest][:phone_numbers_attributes].uniq!
       parsed_payload
     end
 
@@ -66,7 +65,7 @@ module Payload
             email: reservation_details['guest_email'],
             first_name: reservation_details['guest_first_name'],
             last_name: reservation_details['guest_last_name'],
-            phone_numbers_attributes: reservation_details['guest_phone_numbers'].map { |phone_number| { phone_number: } }
+            phone_numbers_attributes: reservation_details['guest_phone_numbers'].uniq.map { |phone_number| { phone_number: } }
           }
         }
       end
