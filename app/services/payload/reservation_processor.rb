@@ -6,11 +6,14 @@ module Payload
       parsed_payload = ReservationParser.call(@payload)
       reservation = Reservation.find_or_initialize_by(code: parsed_payload[:code])
       if reservation.persisted?
+        # Does not update guest details as guest already exists
         reservation.update!(parsed_payload[:reservation])
       else
+        # Does not update guest details as guest already exists
         reservation.assign_attributes(parsed_payload[:reservation])
         guest = Guest.find_or_initialize_by(email: parsed_payload[:guest][:email])
-        guest.assign_attributes(parsed_payload[:guest])
+        # Does not update guest details if guest already exists
+        guest.assign_attributes(parsed_payload[:guest]) unless guest.persisted?
         reservation.update!(guest:)
       end
       reservation

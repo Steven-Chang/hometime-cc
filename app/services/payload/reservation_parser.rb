@@ -5,7 +5,7 @@ module Payload
     def call
       parsed_payload = if @payload['reservation_code']
         parse_payload_one
-      elsif @payload['reservation']['code']
+      elsif @payload['reservation'] && @payload['reservation']['code']
         parse_payload_two
       else
         raise StandardError, 'Invalid reservation payload.'
