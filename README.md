@@ -100,11 +100,11 @@ rake active_record_doctor
 
 #### Reservation
 
-The column for nights and guests may not be necessary. If necessary, they could be calculated in a before callback from the related fields. I decided to validate the fields instead as I'm not sure of the exact situation and thought we might be expected to validate the data.
+The column for nights, guests and total_price may not be necessary. If necessary, they could be calculated in a before callback from the related fields. I decided to validate the fields instead as I'm not sure of the exact situation and thought we might be expected to validate the data.
 
 #### PhoneNumber
 
-Decided to create a PhoneNumber model as payload 2 had multiple phone numbers and it's likely that the system may need to store other enteties phone numbers.
+Decided to create a PhoneNumber model as payload 2 had multiple phone numbers and it's likely that the system may need to store other entities phone numbers.
 
 #### Single service for parsing: app/services/payload/reservation_parser.rb
 
