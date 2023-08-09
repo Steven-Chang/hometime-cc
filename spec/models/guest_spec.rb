@@ -19,4 +19,8 @@ RSpec.describe Guest do
       it { should validate_uniqueness_of(:email).case_insensitive }
     end
   end
+
+  describe 'NESTED ATTRIBUTES' do
+    it { should accept_nested_attributes_for(:phone_numbers) }
+  end
 end
