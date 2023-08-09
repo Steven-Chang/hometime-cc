@@ -2,8 +2,8 @@
 
 class Reservation < ApplicationRecord
   # === ENUMERABLES ===
-  enum currency: { aud: 0 }
-  enum status: { accepted: 0 }
+  enum currency: { aud: 0, usd: 1 }
+  enum status: { accepted: 0, rejected: 1 }
 
   # === ASSOCIATIONS ===
   belongs_to :guest

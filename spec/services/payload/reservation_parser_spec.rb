@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Payload::ReservationParser do
   describe '#call' do
-    let(:payload_one_json) { JSON.parse(File.read("spec/fixtures/payloads/reservations/payload_one.json")) }
-    let(:payload_two_json) { JSON.parse(File.read("spec/fixtures/payloads/reservations/payload_two.json")) }
+    let(:payload_one_json) { JSON.parse(File.read('spec/fixtures/payloads/reservations/payload_one.json')) }
+    let(:payload_two_json) { JSON.parse(File.read('spec/fixtures/payloads/reservations/payload_two.json')) }
 
     describe '#call' do
       context 'when payload corresponds to payload one' do

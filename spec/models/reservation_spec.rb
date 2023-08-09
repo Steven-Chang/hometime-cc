@@ -6,8 +6,8 @@ RSpec.describe Reservation do
   let(:reservation) { build(:reservation) }
 
   describe 'ENUMS' do
-    it { should define_enum_for(:currency).with_values(aud: 0) }
-    it { should define_enum_for(:status).with_values(accepted: 0) }
+    it { should define_enum_for(:currency).with_values(aud: 0, usd: 1) }
+    it { should define_enum_for(:status).with_values(accepted: 0, rejected: 1) }
   end
 
   describe 'ASSOCIATIONS' do
