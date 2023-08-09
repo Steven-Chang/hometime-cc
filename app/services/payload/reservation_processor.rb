@@ -4,7 +4,7 @@ module Payload
   class ReservationProcessor < PayloadService
     def call
       parsed_payload = ReservationParser.call(@payload)
-      reservation = Reservation.find_or_initialize_by(code: parsed_payload[:code])
+      reservation = Reservation.find_or_initialize_by(code: parsed_payload[:reservation][:code])
       if reservation.persisted?
         # Does not update guest details as guest already exists
         reservation.update!(parsed_payload[:reservation])
